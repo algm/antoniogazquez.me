@@ -1,5 +1,6 @@
 ---
 templateKey: blog-post
+image: /img/programming.svg
 title: Hello world!
 date: 2018-11-10T15:04:10.000Z
 description: My first post
