@@ -11,7 +11,7 @@ const BlogSummary = ({ posts }) => {
                     </h2>
                 </div>
                 {posts.map(({ node: post }) => (
-                    <PostPreview post={post} />
+                    <PostPreview key={post.id} post={post} />
                 ))}
             </div>
         </section>

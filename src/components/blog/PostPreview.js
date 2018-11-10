@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 const PostPreview = ({ post }) => (
-    <article key={post.id}>
+    <article>
         <div>
             <h3 className="font-light text-2xl">
                 <Link
