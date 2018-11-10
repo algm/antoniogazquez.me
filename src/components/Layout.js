@@ -6,11 +6,12 @@ import './all.css';
 const TemplateWrapper = ({ children }) => (
     <div>
         <Helmet title="Antonio Gázquez" />
+
         <Fragment>{children}</Fragment>
 
         <CookieConsent
             location="bottom"
-            buttonText="Vale!"
+            buttonText="¡Vale!"
             cookieName="cookie_consent"
         >
             Este sitio utiliza cookies para mejorar la experiencia del usuario.

@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import Intro from '../components/Intro';
 import BlogSummary from '../components/BlogSummary';
 import Resume from '../components/Resume';
+import Footer from '../components/Footer';
 
 export default class IndexPage extends React.Component {
     render() {
@@ -16,6 +17,7 @@ export default class IndexPage extends React.Component {
                 <Intro />
                 <BlogSummary posts={posts} />
                 <Resume />
+                <Footer />
             </Layout>
         );
         /*return (

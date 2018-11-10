@@ -64,6 +64,18 @@
     @apply bg-white inline-block absolute w-16;
 }
 
+.side-borders-dark {
+    @apply relative;
+}
+
+.side-borders-dark:before {
+    @apply bg-grey-darkest;
+}
+
+.side-borders-dark:after {
+    @apply bg-grey-darkest;
+}
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.

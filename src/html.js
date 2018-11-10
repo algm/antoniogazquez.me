@@ -6,7 +6,7 @@ export default class HTML extends React.Component {
         return (
             <html
                 {...this.props.htmlAttributes}
-                className="bg-white antialiased"
+                className="bg-grey-lightest antialiased"
             >
                 <head>
                     <meta charSet="utf-8" />
