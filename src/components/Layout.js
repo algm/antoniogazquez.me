@@ -5,8 +5,7 @@ import './all.css';
 
 const TemplateWrapper = ({ children }) => (
     <div>
-        <Helmet title="Antonio Gázquez" />
-
+        <Helmet title="Antonio Gázquez" description="Desarrollador web" />
         <Fragment>{children}</Fragment>
 
         <CookieConsent
