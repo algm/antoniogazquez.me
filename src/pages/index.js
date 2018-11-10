@@ -1,14 +1,24 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link, graphql } from 'gatsby';
+import Layout from '../components/Layout';
+import Intro from '../components/Intro';
+import BlogSummary from '../components/BlogSummary';
+import Resume from '../components/Resume';
 
 export default class IndexPage extends React.Component {
-  render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+    render() {
+        const { data } = this.props;
+        const { edges: posts } = data.allMarkdownRemark;
 
-    return (
+        return (
+            <Layout>
+                <Intro />
+                <BlogSummary posts={posts} />
+                <Resume />
+            </Layout>
+        );
+        /*return (
       <Layout>
         <section className="section">
           <div className="container">
@@ -42,38 +52,39 @@ export default class IndexPage extends React.Component {
           </div>
         </section>
       </Layout>
-    )
-  }
+    )*/
+    }
 }
 
 IndexPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
+    data: PropTypes.shape({
+        allMarkdownRemark: PropTypes.shape({
+            edges: PropTypes.array,
+        }),
     }),
-  }),
-}
+};
 
 export const pageQuery = graphql`
-  query IndexQuery {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 400)
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            templateKey
-            date(formatString: "MMMM DD, YYYY")
-          }
+    query IndexQuery {
+        allMarkdownRemark(
+            sort: { order: DESC, fields: [frontmatter___date] }
+            filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
+            limit: 3
+        ) {
+            edges {
+                node {
+                    excerpt(pruneLength: 400)
+                    id
+                    fields {
+                        slug
+                    }
+                    frontmatter {
+                        title
+                        templateKey
+                        date(formatString: "DD MMMM YYYY", locale: "es-ES")
+                    }
+                }
+            }
         }
-      }
     }
-  }
-`
+`;
