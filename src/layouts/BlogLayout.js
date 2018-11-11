@@ -1,7 +1,8 @@
 import React from 'react';
 import Gravatar from 'react-gravatar';
 import { Link } from 'gatsby';
-import { Twitter, Facebook, Linkedin, GitHub, Gitlab } from 'react-feather';
+
+import SocialLinks from '../components/SocialLinks';
 
 const BlogLayout = ({ children }) => (
     <div className="container m-auto my-8 flex">
@@ -30,41 +31,7 @@ const BlogLayout = ({ children }) => (
                         </div>
                     </div>
                     <div className="my-2 font-sm">
-                        <a
-                            className="inline-block text-grey-dark hover:text-grey-darker mr-1"
-                            href="https://github.com/algm"
-                            target="_blank"
-                        >
-                            <GitHub size={16} />
-                        </a>
-                        <a
-                            className="inline-block text-grey-dark hover:text-grey-darker mr-1"
-                            href="https://gitlab.com/algm"
-                            target="_blank"
-                        >
-                            <Gitlab size={16} />
-                        </a>
-                        <a
-                            className="inline-block text-grey-dark hover:text-grey-darker mr-1"
-                            href="https://twitter.com/algm85"
-                            target="_blank"
-                        >
-                            <Twitter size={16} />
-                        </a>
-                        <a
-                            className="inline-block text-grey-dark hover:text-grey-darker mr-1"
-                            href="https://www.facebook.com/agazquezmegias"
-                            target="_blank"
-                        >
-                            <Facebook size={16} />
-                        </a>
-                        <a
-                            className="inline-block text-grey-dark hover:text-grey-darker mr-1"
-                            href="https://www.linkedin.com/in/antonio-g%C3%A1zquez-19341a18/"
-                            target="_blank"
-                        >
-                            <Linkedin size={16} />
-                        </a>
+                        <SocialLinks />
                     </div>
                 </header>
             </aside>

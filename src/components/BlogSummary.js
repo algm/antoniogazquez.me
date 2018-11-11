@@ -1,11 +1,12 @@
 import React from 'react';
 import PostPreview from './blog/PostPreview';
 import { Link } from 'gatsby';
+import { Book } from 'react-feather';
 
 const BlogSummary = ({ posts }) => {
     return (
         <section>
-            <div className="mx-auto mt-8 max-w-lg w-full pt-6 pb-16">
+            <div className="mx-auto mt-8 max-w-lg w-full pt-6 pb-8">
                 <div className="text-center">
                     <h2 className="inline-block text-3xl font-semibold mw-full mx-auto side-borders side-borders-dark mb-8">
                         Cosas que he dicho
@@ -14,12 +15,18 @@ const BlogSummary = ({ posts }) => {
                 {posts.map(({ node: post }) => (
                     <PostPreview key={post.id} post={post} />
                 ))}
-                <div className="mt-8">
+                <div>
                     <Link
-                        className="text-blue no-underline hover:text-blue-light"
-                        to="/blog"
+                        to="/blog/"
+                        className="text-blue hover:text-blue-dark no-underline"
                     >
-                        Ver todos los posts
+                        <Book
+                            size={16}
+                            className="text-grey-darker inline-block align-middle"
+                        />{' '}
+                        <span className="inline-block align-middle">
+                            Ver todos los posts
+                        </span>
                     </Link>
                 </div>
             </div>

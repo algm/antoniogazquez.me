@@ -1,6 +1,7 @@
 import React from 'react';
 import { Parallax } from 'react-parallax';
 import background from '../../static/img/header-bg.jpg';
+import SocialLinks from './SocialLinks';
 
 const Intro = () => (
     <header>
@@ -17,6 +18,13 @@ const Intro = () => (
                         Antonio Gázquez
                     </h1>
                     <p>Desarrollador web</p>
+                    <p className="text-center">
+                        <SocialLinks
+                            size={16}
+                            color="grey-light"
+                            hoverColor="white"
+                        />
+                    </p>
                 </div>
             </div>
         </Parallax>

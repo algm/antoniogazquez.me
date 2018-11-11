@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link, Img } from 'gatsby';
+import { Link } from 'gatsby';
+import { ChevronRight } from 'react-feather';
 
 const PostPreview = ({ post }) => (
     <article>
-        <div className="flex justify-between content-center items-center mb-16">
+        <div className="flex justify-between content-center items-center mb-8">
             <div className="w-2/3">
                 <h3 className="font-light text-2xl">
                     <Link
@@ -20,10 +21,16 @@ const PostPreview = ({ post }) => (
                 <div className="mb-3 text-lg">{post.excerpt}</div>
                 <p>
                     <Link
-                        className="bg-blue hover:bg-blue-dark text-white no-underline p-2 inline-block rounded"
+                        className="text-blue hover:text-blue-dark no-underline inline-block rounded"
                         to={post.fields.slug}
                     >
-                        Seguir leyendo
+                        <span className="inline-block align-middle">
+                            Seguir leyendo
+                        </span>{' '}
+                        <ChevronRight
+                            size={14}
+                            className="text-grey-dark inline-block align-middle"
+                        />
                     </Link>
                 </p>
             </div>
