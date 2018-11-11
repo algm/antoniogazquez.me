@@ -119,7 +119,7 @@ module.exports = {
                 short_name: 'Antonio Gázquez',
                 start_url: '/',
                 background_color: '#f8fafc',
-                theme_color: '#3490dc',
+                theme_color: '#3d4852',
                 icon: 'src/img/icon.jpg',
             },
         },
