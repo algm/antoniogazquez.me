@@ -17,7 +17,7 @@ module.exports = {
                 ],
             },
         },
-        'gatsby-plugin-purgecss',
+        //'gatsby-plugin-purgecss',
         {
             // keep as first gatsby-source-filesystem plugin for gatsby image support
             resolve: 'gatsby-source-filesystem',
