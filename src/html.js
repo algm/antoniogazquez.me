@@ -7,10 +7,12 @@ export default class HTML extends React.Component {
             <html
                 {...this.props.htmlAttributes}
                 className="bg-grey-lightest antialiased"
+                lang="es"
             >
                 <head>
                     <meta charSet="utf-8" />
                     <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+                    <meta httpEquiv="Content-Language" content="es" />
                     <meta
                         name="viewport"
                         content="width=device-width, initial-scale=1, shrink-to-fit=no"

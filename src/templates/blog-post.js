@@ -83,7 +83,7 @@ export const BlogPostTemplate = ({
     );
 };
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ data, location }) => {
     const { markdownRemark: post } = data;
 
     return (
@@ -93,7 +93,31 @@ const BlogPost = ({ data }) => {
                 content={post.htmlAst}
                 contentComponent={HTMLContent}
                 description={post.frontmatter.description}
-                helmet={<Helmet title={`${post.frontmatter.title} | Blog`} />}
+                helmet={
+                    <Helmet title={`${post.frontmatter.title} | Blog`}>
+                        <meta
+                            name="description"
+                            content={post.frontmatter.description}
+                        />
+                        <meta property="og:type" content="article" />
+                        <meta
+                            property="og:title"
+                            content={post.frontmatter.title}
+                        />
+                        <meta property="og:url" content={location.href} />
+                        <meta
+                            property="og:description"
+                            content={post.frontmatter.description}
+                        />
+
+                        <meta
+                            property="og:image"
+                            content={post.frontmatter.image.publicURL}
+                        />
+
+                        <link rel="canonical" href={location.href} />
+                    </Helmet>
+                }
                 tags={post.frontmatter.tags}
                 image={post.frontmatter.image.publicURL}
                 title={post.frontmatter.title}

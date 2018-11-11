@@ -112,5 +112,16 @@ module.exports = {
             },
         },
         'gatsby-plugin-netlify', // make sure to keep it last in the array
+        {
+            resolve: 'gatsby-plugin-manifest',
+            options: {
+                name: 'Antonio Gázquez',
+                short_name: 'Antonio Gázquez',
+                start_url: '/',
+                background_color: '#f8fafc',
+                theme_color: '#3490dc',
+                icon: 'src/img/icon.jpg',
+            },
+        },
     ],
 };

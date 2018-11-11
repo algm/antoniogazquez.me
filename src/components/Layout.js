@@ -6,7 +6,28 @@ import './all.css';
 
 const TemplateWrapper = ({ children }) => (
     <div>
-        <Helmet title="Antonio Gázquez" description="Desarrollador web" />
+        <Helmet
+            title="Home"
+            titleTemplate={'%s - Antonio Gázquez'}
+            description="Desarrollador web"
+        >
+            <meta
+                name="description"
+                content="Web personal de Antonio Gázquez"
+            />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="Antonio Gázquez" />
+            <meta property="og:site_name" content="AntonioGázquez" />
+            <meta property="og:url" content="https://antoniogazquez.me/" />
+            <meta
+                property="og:description"
+                content="Web personal de Antonio Gázquez"
+            />
+            <meta property="og:type" content="website" />
+            <meta property="og:image" content="/img/header-bg.jpg" />
+            <meta name="og:locale" content="es_ES" />
+            <link rel="canonical" href="https://antoniogazquez.me/" />
+        </Helmet>
         <Fragment>{children}</Fragment>
         <Footer />
         <CookieConsent
