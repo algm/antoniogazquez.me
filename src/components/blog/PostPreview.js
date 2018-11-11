@@ -4,8 +4,8 @@ import { ChevronRight } from 'react-feather';
 
 const PostPreview = ({ post }) => (
     <article>
-        <div className="flex justify-between content-center items-center mb-8">
-            <div className="w-2/3">
+        <div className="md:flex md:justify-between md:content-center md:items-center mb-4 md:mb-8">
+            <div className="md:w-2/3">
                 <h3 className="font-light text-2xl">
                     <Link
                         className="no-underline text-blue hover:text-blue-dark"
@@ -34,8 +34,11 @@ const PostPreview = ({ post }) => (
                     </Link>
                 </p>
             </div>
-            <div className="w-1/3 pl-4">
-                <img src={post.frontmatter.image.publicURL} />
+            <div className="md:w-1/3 md:pl-4 invisible hidden md:visible md:block">
+                <img
+                    src={post.frontmatter.image.publicURL}
+                    className="rounded-lg"
+                />
             </div>
         </div>
     </article>

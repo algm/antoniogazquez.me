@@ -3,7 +3,7 @@ import linkedin from '../../static/img/linkedin.jpg';
 
 const Footer = () => (
     <footer>
-        <div className="mx-auto mt-8 max-w-md w-full text-center mb-16">
+        <div className="mx-auto px-4 mt-8 max-w-md w-full text-center mb-16">
             <p className="grey-dark">
                 Si quieres ponerte en contacto conmigo, puedes usar mi{' '}
                 <a

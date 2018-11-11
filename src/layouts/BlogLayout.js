@@ -5,11 +5,11 @@ import { Link } from 'gatsby';
 import SocialLinks from '../components/SocialLinks';
 
 const BlogLayout = ({ children }) => (
-    <div className="container m-auto my-8 flex">
-        <div className="w-64 p-2 max-h-screen sticky pin-t">
+    <div className="container m-auto my-2 md:my-8 md:flex">
+        <div className="md:w-64 py-2 px-8 md:p-2 max-h-screen md:sticky md:pin-t bg-grey-lightest">
             <aside>
-                <header className="sticky pin-t">
-                    <div className="flex justify-start content-start items-start">
+                <header>
+                    <div className="flex justify-center md:justify-start content-center md:content-start items-center ">
                         <div className="max-w-1/4 text-center">
                             <Gravatar
                                 email="piticonejo@gmail.com"
@@ -30,14 +30,14 @@ const BlogLayout = ({ children }) => (
                             </p>
                         </div>
                     </div>
-                    <div className="my-2 font-sm">
+                    <div className="my-2 font-sm text-center md:text-left">
                         <SocialLinks />
                     </div>
                 </header>
             </aside>
         </div>
 
-        <div className="w-3/4 p-2">{children}</div>
+        <div className="md:w-3/4 p-2">{children}</div>
     </div>
 );
 

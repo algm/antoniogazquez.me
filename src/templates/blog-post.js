@@ -35,7 +35,7 @@ export const BlogPostTemplate = ({
                         bgImage={image}
                         strength={400}
                         className="h-halfscreen bg-black text-white p-0 m-0"
-                        bgClassName="h-halfscreen"
+                        bgClassName="h-halfscreen fit-cover"
                     >
                         <div className="h-halfscreen flex flex-col content-end justify-end items-end bg-gradient-img">
                             <div className="leading-loose text-center w-full tracking-wide">

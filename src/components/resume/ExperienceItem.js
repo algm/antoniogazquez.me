@@ -29,17 +29,17 @@ const ExperienceItem = ({ children, img, title, position, from, to, url }) => {
     }
 
     return (
-        <div className="my-8">
+        <div className="my-4 mb-8 md:my-8">
             <article>
-                <div className="flex justify-start items-center content-center text-base">
-                    <div className="pr-4">
+                <div className="px-8 md:flex md:justify-start md:items-center md:content-center md:text-base">
+                    <div className="md:pr-4 md:pl-0">
                         <img
                             src={img}
                             alt={title}
-                            className="w-48 max-h-full  rounded-lg"
+                            className="h-24 md:h-auto md:w-48 md:max-h-full rounded-lg mb-2"
                         />
                     </div>
-                    <div className="w-3/4 pl-4 flex-1">
+                    <div className="md:w-3/4 md:pl-4 md:flex-1">
                         <h3 className="text-2xl font-medium text-blue">
                             {titleContent}
                         </h3>

@@ -47,34 +47,44 @@
 .side-borders {
 }
 
-.side-borders:before {
-    content: ' ';
-    top: 50%;
-    right: 100%;
-    height: 2px;
-    margin: 0 10px;
-    @apply bg-white inline-block absolute w-16;
+.radial-overlay {
+    background-image: radial-gradient(
+        circle,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0)
+    );
 }
 
-.side-borders:after {
-    content: ' ';
-    left: 100%;
-    top: 50%;
-    height: 2px;
-    margin: 0 10px;
-    @apply bg-white inline-block absolute w-16;
-}
+@screen md {
+    .side-borders:before {
+        content: ' ';
+        top: 50%;
+        right: 100%;
+        height: 2px;
+        margin: 0 10px;
+        @apply bg-white inline-block absolute w-16;
+    }
 
-.side-borders-dark {
-    @apply relative;
-}
+    .side-borders:after {
+        content: ' ';
+        left: 100%;
+        top: 50%;
+        height: 2px;
+        margin: 0 10px;
+        @apply bg-white inline-block absolute w-16;
+    }
 
-.side-borders-dark:before {
-    @apply bg-grey-darkest;
-}
+    .side-borders-dark {
+        @apply relative;
+    }
 
-.side-borders-dark:after {
-    @apply bg-grey-darkest;
+    .side-borders-dark:before {
+        @apply bg-grey-darkest;
+    }
+
+    .side-borders-dark:after {
+        @apply bg-grey-darkest;
+    }
 }
 
 @responsive {
