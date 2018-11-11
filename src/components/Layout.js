@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
 import CookieConsent from 'react-cookie-consent';
+import Footer from './Footer';
 import './all.css';
 
 const TemplateWrapper = ({ children }) => (
     <div>
         <Helmet title="Antonio Gázquez" description="Desarrollador web" />
         <Fragment>{children}</Fragment>
-
+        <Footer />
         <CookieConsent
             location="bottom"
             buttonText="¡Vale!"

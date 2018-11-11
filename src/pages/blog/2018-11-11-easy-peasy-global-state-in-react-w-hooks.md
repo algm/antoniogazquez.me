@@ -5,15 +5,14 @@ title: Easy Peasy global state in React w/ Hooks
 date: 2018-11-11T12:15:11.774Z
 description: Test post from Medium
 tags:
-  - medium
-  - react
-  - global state
+    - medium
+    - react
+    - global state
 ---
+
 > This post assumes some basic knowledge with the new React Hooks feature. If you aren’t familiar with them then I highly recommend you watch the React Conf keynote and Ryan Florence’s talk on the subject.
 >
-> The first few sections set the stage with a bit of backstory — I’ve tried to keep it as concise as possible, however, if you would rather jump straight to the “conclusion” then click 
->
-> [here](https://medium.com/@ctrlplusb/easy-peasy-global-state-in-react-w-hooks-421f5bf827cf#e2af).
+> The first few sections set the stage with a bit of backstory — I’ve tried to keep it as concise as possible, however, if you would rather jump straight to the “conclusion” then click [here](https://medium.com/@ctrlplusb/easy-peasy-global-state-in-react-w-hooks-421f5bf827cf#e2af).
 
 React keeps on giving. The recent announcement of Hooks has blown away complexity and completely reinvigorated my love with React. With these new tools at our disposal I decided to reevaluate the libraries and patterns that I reach for to see if I could replace them with native implementations.
 
@@ -85,7 +84,7 @@ I’ve been using it aggressively for well over a week now, ironing out the init
 
 All you need to do to get started with it is install a single package. Everything you need is included, and no additional configuration is required.
 
-```bash 
+```bash
 npm install easy-peasy
 ```
 
@@ -98,36 +97,38 @@ import { StoreProvider, createStore, useStore, useAction } from 'easy-peasy';
 
 // 👇 firstly, create your store by providing your model
 const store = createStore({
-  todos: {
-    items: ['Install easy-peasy', 'Build app', 'Profit'],
-    // 👇 define actions
-    add: (state, payload) => {
-      state.items.push(payload) // 👈 you mutate state to update (we convert
-                                //    to immutable updates)
-    }
-  }
+    todos: {
+        items: ['Install easy-peasy', 'Build app', 'Profit'],
+        // 👇 define actions
+        add: (state, payload) => {
+            state.items.push(payload); // 👈 you mutate state to update (we convert
+            //    to immutable updates)
+        },
+    },
 });
 
 function App() {
-  return (
-    // 👇 secondly, surround your app with the provider to expose the store to your app
-    <StoreProvider store={store}>
-      <TodoList />
-    </StoreProvider>
-  );
+    return (
+        // 👇 secondly, surround your app with the provider to expose the store to your app
+        <StoreProvider store={store}>
+            <TodoList />
+        </StoreProvider>
+    );
 }
 
 function TodoList() {
-  // 👇 finally, use hooks to get state or actions. your component will receive
-  //    updated state automatically
-  const todos = useStore(state => state.todos.items)
-  const add = useAction(dispatch => dispatch.todos.add)
-  return (
-    <div>
-      {todos.map((todo, idx) => <div key={idx}>{todo.text}</div>)}
-      <AddTodo onAdd={add} />
-    </div>
-  )
+    // 👇 finally, use hooks to get state or actions. your component will receive
+    //    updated state automatically
+    const todos = useStore(state => state.todos.items);
+    const add = useAction(dispatch => dispatch.todos.add);
+    return (
+        <div>
+            {todos.map((todo, idx) => (
+                <div key={idx}>{todo.text}</div>
+            ))}
+            <AddTodo onAdd={add} />
+        </div>
+    );
 }
 ```
 
@@ -137,12 +138,12 @@ Let’s break the API down into smaller bites. Firstly, define your model…
 
 ```javascript
 const model = {
-  todos: {
-    items: [],
-  },
-  session: {
-    user: null 
-  }
+    todos: {
+        items: [],
+    },
+    session: {
+        user: null,
+    },
 };
 ```
 
@@ -150,16 +151,16 @@ To define actions that will be used to update your state you simply add a functi
 
 ```javascript
 const model = {
-  todos: {
-    items: [],
-    // 👇 an action
-    add: (state, payload) => {
-      state.items.push(payload);  
-    }
-  },
-  session: {
-    user: null 
-  }
+    todos: {
+        items: [],
+        // 👇 an action
+        add: (state, payload) => {
+            state.items.push(payload);
+        },
+    },
+    session: {
+        user: null,
+    },
 };
 ```
 
@@ -178,27 +179,26 @@ store.getState().todos.items;
 // ['Install easy-peasy']
 
 // and dispatch actions
-store.dispatch.todos.add('Build an app')
+store.dispatch.todos.add('Build an app');
 //            |---------|
 //                 |- Actions are bound to a path matching model
-  
+
 // and access the other standard APIs of a Redux store
-store.listen(() => console.log('An update occurred'))
+store.listen(() => console.log('An update occurred'));
 ```
 
 To expose your store to your application you provide it to the `StoreProvider`.
 
 ```javascript
-
 import { StoreProvider } from 'easy-peasy';
 
 function App() {
-  return (
-    // 👇 secondly, surround your app with the provider to expose the store to your app
-    <StoreProvider store={store}>
-      <TodoList />
-    </StoreProvider>
-  );
+    return (
+        // 👇 secondly, surround your app with the provider to expose the store to your app
+        <StoreProvider store={store}>
+            <TodoList />
+        </StoreProvider>
+    );
 }
 ```
 
@@ -210,17 +210,17 @@ Need to perform effects such as data fetching/persisting? Then use the effect he
 import { createStore, effect } from 'easy-peasy'; // 👈 import the helper
 
 const store = createStore({
-  session: {
-    user: undefined,
-    // 👇 define your effectful action
-    login: effect(async (dispatch, payload, getState) => {
-      const user = await loginService(payload)
-      dispatch.session.loginSucceeded(user)
-    }),
-    loginSucceeded: (state, payload) => {
-      state.user = payload
-    }
-  }
+    session: {
+        user: undefined,
+        // 👇 define your effectful action
+        login: effect(async (dispatch, payload, getState) => {
+            const user = await loginService(payload);
+            dispatch.session.loginSucceeded(user);
+        }),
+        loginSucceeded: (state, payload) => {
+            state.user = payload;
+        },
+    },
 });
 ```
 
@@ -232,13 +232,13 @@ What about derived state? The select helper has your back.
 import { select } from 'easy-peasy'; // 👈 import the helper
 
 const store = createStore({
-  shoppingBasket: {
-    products: [{ name: 'Shoes', price: 123 }, { name: 'Hat', price: 75 }],
-    // 👇 define your derived state
-    totalPrice: select(state =>
-      state.products.reduce((acc, cur) => acc + cur.price, 0)
-    )
-  }
+    shoppingBasket: {
+        products: [{ name: 'Shoes', price: 123 }, { name: 'Hat', price: 75 }],
+        // 👇 define your derived state
+        totalPrice: select(state =>
+            state.products.reduce((acc, cur) => acc + cur.price, 0)
+        ),
+    },
 });
 ```
 

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, Img } from 'gatsby';
 
 const PostPreview = ({ post }) => (
     <article>
-        <div className="flex justify-between content-center items-center">
+        <div className="flex justify-between content-center items-center mb-16">
             <div className="w-2/3">
                 <h3 className="font-light text-2xl">
                     <Link
@@ -27,7 +27,7 @@ const PostPreview = ({ post }) => (
                     </Link>
                 </p>
             </div>
-            <div className="w-1/3">
+            <div className="w-1/3 pl-4">
                 <img src={post.frontmatter.image.publicURL} />
             </div>
         </div>

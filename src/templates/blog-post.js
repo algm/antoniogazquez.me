@@ -7,12 +7,12 @@ import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout';
 import Content, { HTMLContent } from '../components/Content';
 import Disqus from 'disqus-react';
+import BlogLayout from '../layouts/BlogLayout';
 
 export const BlogPostTemplate = ({
     id,
     content,
     contentComponent,
-    description,
     tags,
     title,
     image,
@@ -22,7 +22,6 @@ export const BlogPostTemplate = ({
     const PostContent = contentComponent || Content;
     const disqusShortname = 'antoniogazquez-me';
     const disqusConfig = {
-        url: id,
         identifier: id,
         title: title,
     };
@@ -38,25 +37,7 @@ export const BlogPostTemplate = ({
                         className="h-halfscreen bg-black text-white p-0 m-0"
                         bgClassName="h-halfscreen"
                     >
-                        <div className="h-halfscreen flex flex-col content-between justify-between items-end bg-gradient-img">
-                            <div className="w-full py-3 flex content-between justify-between items-stretch">
-                                <div className="pl-3">
-                                    <Link
-                                        to="/"
-                                        className="text-white no-underline"
-                                    >
-                                        Antonio Gázquez
-                                    </Link>
-                                </div>
-                                <div className="pr-3">
-                                    <Link
-                                        to="/blog"
-                                        className="text-white no-underline"
-                                    >
-                                        Blog
-                                    </Link>
-                                </div>
-                            </div>
+                        <div className="h-halfscreen flex flex-col content-end justify-end items-end bg-gradient-img">
                             <div className="leading-loose text-center w-full tracking-wide">
                                 <h1 className="text-5xl w-full px-2 font-medium">
                                     {title}
@@ -65,34 +46,38 @@ export const BlogPostTemplate = ({
                         </div>
                     </Parallax>
                 </header>
-                <div className="w-screen m-auto max-w-lg px-2 py-6 text-lg leading-normal">
-                    <p className="my-4 text-grey-dark">Publicado el {date}</p>
-                    {tags && tags.length ? (
-                        <div className="my-4">
-                            {tags.map(tag => (
-                                <Link
-                                    key={tag}
-                                    className="inline-block bg-blue-light p-1 no-underline text-blue-darkest rounded text-sm"
-                                    to={`/tags/${kebabCase(tag)}/`}
-                                >
-                                    {tag}
-                                </Link>
-                            ))}
+                <BlogLayout>
+                    <div className="m-auto container px-4 text-lg leading-normal">
+                        <p className="mb-4 text-grey-dark">
+                            Publicado el {date}
+                        </p>
+                        {tags && tags.length ? (
+                            <div className="my-4">
+                                {tags.map(tag => (
+                                    <Link
+                                        key={tag}
+                                        className="inline-block bg-blue-lighter hover:bg-blue-light p-1 no-underline text-blue-darkest rounded text-sm mr-2"
+                                        to={`/tags/${kebabCase(tag)}/`}
+                                    >
+                                        {tag}
+                                    </Link>
+                                ))}
+                            </div>
+                        ) : null}
+                        <PostContent content={content} />
+                        <div className="py-4">
+                            <div className="text-center">
+                                <h2 className="inline-block text-semibold side-borders side-borders-dark">
+                                    Comentarios
+                                </h2>
+                            </div>
+                            <Disqus.DiscussionEmbed
+                                shortname={disqusShortname}
+                                config={disqusConfig}
+                            />
                         </div>
-                    ) : null}
-                    <PostContent content={content} />
-                    <div className="py-4">
-                        <div className="text-center">
-                            <h2 className="inline-block text-semibold side-borders side-borders-dark">
-                                Comentarios
-                            </h2>
-                        </div>
-                        <Disqus.DiscussionEmbed
-                            shortname={disqusShortname}
-                            config={disqusConfig}
-                        />
                     </div>
-                </div>
+                </BlogLayout>
             </article>
         </section>
     );
@@ -105,7 +90,7 @@ const BlogPost = ({ data }) => {
         <Layout>
             <BlogPostTemplate
                 id={post.id}
-                content={post.html}
+                content={post.htmlAst}
                 contentComponent={HTMLContent}
                 description={post.frontmatter.description}
                 helmet={<Helmet title={`${post.frontmatter.title} | Blog`} />}
@@ -131,6 +116,7 @@ export const pageQuery = graphql`
         markdownRemark(id: { eq: $id }) {
             id
             html
+            htmlAst
             frontmatter {
                 date(formatString: "LLLL", locale: "es-ES")
                 title

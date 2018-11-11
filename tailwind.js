@@ -219,6 +219,7 @@ module.exports = {
             'serif',
         ],
         mono: [
+            'Fira Code',
             'Menlo',
             'Monaco',
             'Consolas',
