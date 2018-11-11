@@ -1,38 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
 import Layout from '../components/Layout';
-import Intro from '../components/Intro';
-import BlogSummary from '../components/BlogSummary';
-import Resume from '../components/Resume';
-import Footer from '../components/Footer';
+import PostPreview from '../components/blog/PostPreview';
 
-export default class IndexPage extends React.Component {
-    render() {
-        const { data } = this.props;
-        const { edges: posts } = data.allMarkdownRemark;
+const Blog = ({ data }) => {
+    const { edges: posts } = data.allMarkdownRemark;
 
-        return (
-            <Layout>
-                <Intro />
-                <BlogSummary posts={posts} />
-                <Resume />
-                <Footer />
-            </Layout>
-        );
-    }
-}
-
-IndexPage.propTypes = {
-    data: PropTypes.shape({
-        allMarkdownRemark: PropTypes.shape({
-            edges: PropTypes.array,
-        }),
-    }),
+    return (
+        <div>
+            {posts.map(({ node: post }) => (
+                <PostPreview key={post.id} post={post} />
+            ))}
+        </div>
+    );
 };
 
+export default Blog;
+
 export const pageQuery = graphql`
-    query IndexQuery {
+    query BlogIndexQuery {
         allMarkdownRemark(
             sort: { order: DESC, fields: [frontmatter___date] }
             filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
