@@ -4,15 +4,15 @@ image: /img/docker2.jpg
 title: Cómo desarrollar en Magento 2 usando Docker
 date: 2018-11-17T22:30:00.000Z
 description: >-
-    Usamos magento-vessel para desarrollar un ecommerce Magento desde nuestra
-    máquina.
+  Usamos magento-vessel para desarrollar un ecommerce Magento desde nuestra
+  máquina.
 tags:
-    - programación
-    - magento
-    - docker
-    - desarrollo
-    - ecommerce
-    - magento-vessel
+  - programación
+  - magento
+  - docker
+  - desarrollo
+  - ecommerce
+  - magento-vessel
 ---
 
 Desde que empecé a trabajar en [Redegal](https://www.redegal.com/es/), he usado mucho Magento (especialmente Magento 2). Es un sistema enorme y complejo y configurar el entorno de desarrollo, la instalación y compartir configuraciones, módulos y código puede llegar a convertirse en todo un reto.
@@ -70,10 +70,10 @@ He visto multitud de guías en Internet sobre instalación de Magento y a la gen
 Seguro que te estarás preguntando cómo demonios pretendo instalar cosas con composer si antes he dicho que sólo necesitamos Docker y git para trabajar. Está todo en los contenedores y tenemos un script listo para esta tarea:
 
 ```bash
-$ ./vessel composer create-project --repository=https://repo.magento.com/ magento/project-community-edition magento
+$ ./vessel composer create-project --repository=https://repo.magento.com/ magento/project-community-editionproject-community-edition .
 ```
 
-Mola, ¿eh? Podemos ejecutar cualquier comando de composer dentro del directorio magento usando `./vessel composer en cualquier momento`.
+Mola, ¿eh? Podemos ejecutar cualquier comando de composer dentro del directorio magento usando `./vessel composer` en cualquier .
 
 Cuando pase un (buen) rato, se habrán instalado todos los paquetes necesarios y tendremos nuestra instalación de Magento lista para comenzar el proceso de configuración.
 
