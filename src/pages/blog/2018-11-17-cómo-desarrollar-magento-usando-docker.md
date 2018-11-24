@@ -73,7 +73,7 @@ Seguro que te estarás preguntando cómo demonios pretendo instalar cosas con co
 $ ./vessel composer create-project --repository=https://repo.magento.com/ magento/project-community-editionproject-community-edition .
 ```
 
-Mola, ¿eh? Podemos ejecutar cualquier comando de composer dentro del directorio magento usando `./vessel composer en cualquier momento`.
+Mola, ¿eh? Podemos ejecutar cualquier comando de composer dentro del directorio magento usando `./vessel composer` en cualquier .
 
 Cuando pase un (buen) rato, se habrán instalado todos los paquetes necesarios y tendremos nuestra instalación de Magento lista para comenzar el proceso de configuración.
 
