@@ -39,7 +39,7 @@ export const BlogPostTemplate = ({
                     >
                         <div className="h-halfscreen flex flex-col content-end justify-end items-end bg-gradient-img">
                             <div className="leading-loose text-center w-full tracking-wide">
-                                <h1 className="text-5xl w-full px-2 font-medium">
+                                <h1 className="text-5xl w-full px-2 font-medium leading-tight md:leading-normal">
                                     {title}
                                 </h1>
                             </div>
@@ -56,7 +56,7 @@ export const BlogPostTemplate = ({
                                 {tags.map(tag => (
                                     <Link
                                         key={tag}
-                                        className="inline-block bg-blue-lighter hover:bg-blue-light p-1 no-underline text-blue-darkest rounded text-sm mr-2"
+                                        className="inline-block bg-blue-lighter hover:bg-blue-light p-1 no-underline text-blue-darkest rounded text-sm mr-2 my-1"
                                         to={`/tags/${kebabCase(tag)}/`}
                                     >
                                         {tag}

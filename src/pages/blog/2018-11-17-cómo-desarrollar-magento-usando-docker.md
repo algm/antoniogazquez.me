@@ -25,13 +25,13 @@ Este entorno de Docker está basado en el excelente [Vessel](https://vessel.ship
 
 A continuación os detallo una pequeña guía sobre cómo podéis usarlo.
 
-## Peparación del entorno
+## Preparación del entorno
 
 Lo primero que necesitaremos es una cuenta en <https://marketplace.magento.com> y unas credenciales para acceder a los repos de Magento. Puedes crearlas aquí: <https://marketplace.magento.com/customer/accessKeys/>.
 
 Para poder utilizar este sistema, obviamente, necesitas tener instalado Docker y docker-compose. Si nunca has utilizado Docker y no lo tienes instalado, consulta la guía oficial en <https://docs.docker.com>.
 
-Recomiendo encarecidamente que uses un sistema GNU/Linux para trabajar con Docker, ya que está diseñado para trabajar con una funcionalidad nativa del kernel Linux y obtendrás el mejor rendimiento y compatibilidad si lo usa sobre él.
+Recomiendo encarecidamente que uses un sistema GNU/Linux para trabajar con Docker, ya que está diseñado para trabajar con una funcionalidad nativa del kernel Linux y obtendrás el mejor rendimiento y compatibilidad si lo usas sobre él.
 
 Además de Docker necesitarás tener el omnipresente git. Si no lo tienes o no sabes lo que es... debes vivir en otro planeta o no dedicarte a la programación :)
 
@@ -61,7 +61,7 @@ Una vez esté listo podemos arrancar las máquinas:
 $ ./vessel start
 ```
 
-Si todo ha ido correctamente, deberiamos tener nuestro entorno arrancado... ¡pero aún no tenemos Magento! Calma, calma, vamos a instalarlo a continuación.
+Si todo ha ido correctamente, deberíamos tener nuestro entorno arrancado... ¡pero aún no tenemos Magento! Calma, calma, vamos a instalarlo a continuación.
 
 ## Instalando Magento 2 con composer
 
