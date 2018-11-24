@@ -55,6 +55,10 @@
     );
 }
 
+.gatsby-resp-image-wrapper {
+    @apply block mx-auto my-6;
+}
+
 @screen md {
     .side-borders:before {
         content: ' ';

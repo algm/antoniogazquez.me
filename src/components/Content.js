@@ -15,7 +15,6 @@ const renderAst = new rehypeReact({
         code: Code,
         blockquote: Quote,
         a: Anchor,
-        img: Image
     },
 }).Compiler;
 
