@@ -14,7 +14,6 @@ tags:
   - ecommerce
   - magento-vessel
 ---
-
 Desde que empecé a trabajar en [Redegal](https://www.redegal.com/es/), he usado mucho Magento (especialmente Magento 2). Es un sistema enorme y complejo y configurar el entorno de desarrollo, la instalación y compartir configuraciones, módulos y código puede llegar a convertirse en todo un reto.
 
 Para simplificar un poco todo esto decidí crear un entorno dockerizado de desarrollo para poder configurar entornos de la forma más indolora posible.
@@ -70,10 +69,10 @@ He visto multitud de guías en Internet sobre instalación de Magento y a la gen
 Seguro que te estarás preguntando cómo demonios pretendo instalar cosas con composer si antes he dicho que sólo necesitamos Docker y git para trabajar. Está todo en los contenedores y tenemos un script listo para esta tarea:
 
 ```bash
-$ ./vessel composer create-project --repository=https://repo.magento.com/ magento/project-community-editionproject-community-edition .
+$ ./vessel composer create-project --repository=https://repo.magento.com/ magento/project-community-edition .
 ```
 
-Mola, ¿eh? Podemos ejecutar cualquier comando de composer dentro del directorio magento usando `./vessel composer` en cualquier .
+Mola, ¿eh? Podemos ejecutar cualquier comando de composer dentro del directorio magento usando `./vessel composer` en cualquier momento.
 
 Cuando pase un (buen) rato, se habrán instalado todos los paquetes necesarios y tendremos nuestra instalación de Magento lista para comenzar el proceso de configuración.
 
