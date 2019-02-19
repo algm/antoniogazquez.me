@@ -14,4 +14,17 @@ tags:
   - legacy code
   - php
 ---
-Cuando trabajas en webs con mucho código del que conocemos como "legado" muchas veces te encuentras con procesos que son muy lentos y penalizan muchísimo el rendimiento de la web. Estos son algunos trucos que utilizo para mejorar estas situaciones sin muchos quebraderos de cabeza.
+# Aumenta los recursos de hardware
+
+# Indexa bien las bases de datos
+
+# Pide los datos de una sóla vez
+
+# Utiliza generadores
+
+# Cachea todo lo cacheable
+
+# Ejecuta en segundo plano
+
+# Almacena los datos procesados
+
