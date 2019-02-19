@@ -26,7 +26,7 @@ Parece una tontería, pero no lo es. Cuando nos encontramos con un sistema lento
 Es muy importante enfocar las cosas de forma constructiva. Como decía un amigo: **No me des problemas, dame soluciones.**
 
 # 2. Aumenta los recursos de hardware
-La solución más obvia (y la más cara probablemente) es darle más músculo al hardware que mueve la aplicación; hacer peticiones distribuidas, usar una base de datos con replicación de lectura, aumentar la RAM, la CPU, todo esto puede mitigar el problema, al menos mientras buscamos una solución más óptima.
+La solución más obvia (y la más cara probablemente) es darle más músculo al hardware que mueve la aplicación; hacer peticiones distribuidas, usar una base de datos con replicación de lectura, aumentar la RAM, la CPU... todo esto puede mitigar el problema, al menos mientras buscamos una solución más óptima.
 
 # 3. Indexa bien las bases de datos
 
