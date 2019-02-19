@@ -14,11 +14,17 @@ tags:
   - legacy code
   - php
 ---
+Importaciones de datos, búsquedas complejas, consultas a APIs; todas estos procesos nos los encontramos en muchos proyectos y muchas veces se convierten en un quebradero de cabeza, un cuello de botella de rendimiento y, al final, en un pozo negro de tiempo, recursos y dinero. 
+
+He conocido (y también creado, quien esté libre de pecado que tire la primera piedra) muchos casos como los que he mencionado. En este artículo voy a intentar proporcionar una serie de consejos que me han ayudado en el pasado para mejorar el rendimiento de nuestras aplicaciones.
+
+Enfocaré los ejemplos a código php, pero son aplicables a casi cualquier lenguaje de programación.
+
 # Aumenta los recursos de hardware
 
 # Indexa bien las bases de datos
 
-# Pide los datos de una sóla vez
+# Pide los datos de una sola vez
 
 # Utiliza generadores
 
@@ -28,3 +34,4 @@ tags:
 
 # Almacena los datos procesados
 
+# Utiliza servicios con soluciones específicas
