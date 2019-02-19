@@ -22,7 +22,7 @@ Enfocaré los ejemplos a código php, pero son aplicables a casi cualquier lengu
 
 # 1. No busques culpables
 
-Parece una tontería, pero no lo es. Cuando nos encontramos con un sistema lento y pesado lo primero que hacemos es pensar que aquellas personas que lo programaron han tenido la culpa de todos los males y que no saben hacer la O con un canuto. Lo cierto es que no lo sabes, ni importa lo más mínimo. Lo primero que hay que hacer al enfrentarse a una tarea de este tipo, especialmente si no la han hecho en tu empresa, es asumir que quien fuera que lo hiciera tuvo sus razones y sus circunstancias, pero sus soluciones, por el motivo que sea, han dejado de ajustarse a las necesidades actuales. 
+Parece una tontería, pero no lo es. Cuando nos encontramos con un sistema lento y pesado lo primero que hacemos es pensar que aquellas personas que lo programaron han tenido la culpa de todos los males y que no saben hacer la O con un canuto. Lo cierto es que no lo sabes, ni importa lo más mínimo. Lo primero que hay que hacer al enfrentarse a una tarea de este tipo, especialmente si no la has hecho tú ni tu equipo, es asumir que quien fuera que lo hiciera tuvo sus razones y sus circunstancias; pero sus soluciones, por el motivo que sea, han dejado de ajustarse a las necesidades actuales. 
 Es muy importante enfocar las cosas de forma constructiva. Como decía un amigo: **No me des problemas, dame soluciones.**
 
 # 2. Aumenta los recursos de hardware
