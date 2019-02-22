@@ -33,7 +33,7 @@ Sólo recurriría a esto como medida temporal para ganar tiempo y tampoco está 
 
 # 3. Indexa bien las bases de datos
 
-Es sorprendente la de veces que algo tan fácil como añadir un índice a una tabla de una base de datos a mejorado en gran medida el rendimiento de una web. Antes de remangarte y ponerte a tocar código, comprueba, si aplica, las queries a la base de datos que intervengan en el proceso que quieres optimizar, a veces encontrarás una query que tarda una eternidad y sólo con añadir un índice en el sitio correcto se hará casi de forma instantánea.
+Es sorprendente la de veces que algo tan fácil como añadir un índice a una tabla de una base de datos ha mejorado en gran medida el rendimiento de una web. Antes de remangarte y ponerte a tocar código, comprueba, si aplica, las queries a la base de datos que intervengan en el proceso que quieres optimizar. A veces encontrarás una query que tarda una eternidad y sólo con añadir un índice en el sitio correcto hará que se ejecute casi de forma instantánea.
 
 Más info: [https://www.sitepoint.com/optimize-mysql-indexes-slow-queries-configuration/](https://www.sitepoint.com/optimize-mysql-indexes-slow-queries-configuration/)
 
@@ -73,7 +73,7 @@ class MiProcesadorDeCosas
         // obtenemos una colección de cosas
         $datosDeLasCosas = MiModeloDeCosas::whereIn('id', $cosas)->get(); 
 
-        foreach ($datosDeLasCosas as $datosDeLaCosa) {
+        foreach ($datosDeLasCosas as $cosa) {
             //ya tenemos la cosa!
             dump($cosa);
         }
@@ -83,9 +83,48 @@ class MiProcesadorDeCosas
 
 Esto multiplicará la eficiencia y lo notarás más cuantos más elementos contenga el array inicial, hasta que te quedes sin memoria. Más adelante veremos cómo solucionar esto.
 
+Este problema se conoce formalmente como "*N+1 Query Problem*". Puedes aprender más al respecto aquí: [https://vegibit.com/how-to-fix-the-n1-problem/](https://vegibit.com/how-to-fix-the-n1-problem/)
+
 # 5. Usa transacciones
 
+Esto es parecido al caso anterior, aunque nos será útil cuando estemos modificando datos en una base de datos.
 
+Por ejemplo, pongamos este código:
+
+```php
+<?php
+
+class ImportadorDeProductos
+{
+    public function importar(array $productos = [])
+    {        
+        foreach ($productos as $producto) {
+            Producto::create($producto);
+        }
+    }
+}
+```
+
+Al igual que antes, muy sencillo: tenemos un array de datos de productos y hacemos un insert en la base de datos por cada uno de ellos.
+Evidentemente, no tenemos otra forma de hacer esto que insertar de uno en uno. Cuando hacemos un insert en base de datos de esta forma, el motor de base de datos lo que hará (más o menos) será ejecutar la instrucción que le hemos mandado (`INSERT INTO productos VALUES(bla, bla, bla)`) y escribir los datos en disco. Como sabemos la E/S es la parte más lenta de cualquier sistema informático, por lo que debemos intentar minimizarla tanto como podamos.
+
+En las bases de datos relacionales disponemos de una herramienta que se conoce como transacciones que, a grosso modo, almacenará en un buffer los cambios que hagamos y no los hará efectivos hasta que invoquemos la instrucción `COMMIT`. Esto tiene muchas ventajas, la primera es que nos permite cancelar un conjunto de cambios llamando a `ROLLBACK` sin que se haya llegado a hacer ningún cambio en los datos que tenemos guardados y otra, que es que la que nos interesa en este caso, es que no escribirá a disco hasta que digamos que queremos hacer efectivos los cambios. Por lo que sólo tenemos que hacer este cambio en nuestro código:
+
+```php
+<?php
+
+class ImportadorDeProductos
+{
+    public function importar(iterable $productos = [])
+    {   
+        DB::transaction(function() use (&$productos) {
+            foreach ($productos as $producto) {
+                Producto::create($producto);
+            }
+        });        
+    }
+}
+```
 
 # Utiliza generadores
 
@@ -96,10 +135,4 @@ Esto multiplicará la eficiencia y lo notarás más cuantos más elementos conte
 
 
 # Cachea todo lo cacheable
-
-
-
-
-# Utiliza servicios con soluciones específicas
-
 
