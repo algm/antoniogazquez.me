@@ -26,20 +26,60 @@ Parece una tontería, pero no lo es. Cuando nos encontramos con un sistema lento
 Es muy importante enfocar las cosas de forma constructiva. Como decía un amigo: **No me des problemas, dame soluciones.**
 
 # 2. Aumenta los recursos de hardware
+
 La solución más obvia (y la más cara probablemente) es darle más músculo al hardware que mueve la aplicación; hacer peticiones distribuidas, usar una base de datos con replicación de lectura, aumentar la RAM, la CPU... todo esto puede mitigar el problema, al menos mientras buscamos una solución más óptima.
+
+Sólo recurriría a esto como medida temporal para ganar tiempo y tampoco está garantizado que mejore realmente el rendimiento, dependiendo del problema de fondo que tengas.
 
 # 3. Indexa bien las bases de datos
 
+Es sorprendente la de veces que algo tan fácil como añadir un índice a una tabla de una base de datos a mejorado en gran medida el rendimiento de una web. Antes de remangarte y ponerte a tocar código, comprueba, si aplica, las queries a la base de datos que intervengan en el proceso que quieres optimizar, a veces encontrarás una query que tarda una eternidad y sólo con añadir un índice en el sitio correcto se hará casi de forma instantánea.
+
+Más info: [https://www.sitepoint.com/optimize-mysql-indexes-slow-queries-configuration/](https://www.sitepoint.com/optimize-mysql-indexes-slow-queries-configuration/)
+
+# 4. Pide los datos de una sola vez
+
+¿Cuántas veces has visto algo como esto?
+
+```php
+<?php
+
+class MiProcesadorDeCosas
+{
+    public function procesarCosas(array $cosas = [])
+    {
+        //$cosas es un array de ids
+        foreach ($cosas as $cosa) {
+            //sacamos la cosa de la base de datos
+            $datosDeLaCosa = MiModeloDeCosas::find($cosa); 
+        }
+    }
+}
+```
+
+Parece un trozo de código inofensivo, dado un array de ids, hacemos una query a la base de datos por cada uno para obtener sus datos.
+La query es muy sencilla y rápida, es cierto. El problema viene si `$cosas` tiene 100.000 elementos; como por ejemplo si estamos intentando importar un catálogo de productos y queremos actualizar los que ya existen; estaremos haciendo 100.000 queries; las cuales, además de tardar, harán que ese tiempo tu base de datos esté prácticamente bloqueada para traerle datos a tu proceso.
 
 
-# Pide los datos de una sola vez
+
+
+# Usa transacciones
+
+
 
 # Utiliza generadores
 
-# Cachea todo lo cacheable
+
 
 # Ejecuta en segundo plano
 
-# Almacena los datos procesados
+
+
+# Cachea todo lo cacheable
+
+
+
 
 # Utiliza servicios con soluciones específicas
+
+
