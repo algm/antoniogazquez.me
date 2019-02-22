@@ -126,11 +126,83 @@ class ImportadorDeProductos
 }
 ```
 
-# Utiliza generadores
+# 6. Utiliza generadores
 
+Antes hablábamos de que podíamos obtener un montón de datos de la base de datos al mismo tiempo para procesarlos, pidiéndolos todos a la vez. Esto está muy bien, hasta que resulta que estamos iterando sobre 10.000.000 de registros. Hacer una petición con 10.000.000 de ids no es algo muy liviano y no creo que muchos servidores sean capaces de manejarlo. Para esto, tanto php como muchos otros lenguajes de programación disponen de generadores. 
 
+Puedes aprender qué son y cómo utilizar los generadores en este artículo de mi amigo [Gaspar Fernández](https://poesiabinaria.net/): [Iteradores y generadores en PHP o por qué deberíamos utilizar yield más a menudo [con ejemplos]](https://poesiabinaria.net/2017/04/iteradores-generadores-php-deberiamos-utilizar-yield-mas-menudo-ejemplos/).
 
-# Ejecuta en segundo plano
+Veamos un ejemplo:
+
+```php
+<?php
+
+use MiClienteApi;
+
+class ImportadorDeProductos
+{
+    protected $api;
+
+    public function __construct(MiClienteApi $api)
+    {
+        $this->api = $api;
+    }
+
+    public function importar()
+    {   
+        $productos = $this->obtenerProductosDeApi();
+
+        DB::transaction(function() use ($productos) {
+            foreach ($productos as $producto) {
+                Producto::create($producto);
+            }
+        });
+    }
+
+    protected function obtenerProductosDeApi(): iterable
+    {
+        return $this->api->dameTodosLosProductos();
+    }
+}
+```
+
+En este ejemplo, tenemos una api que tenemos abstraida en una clase, con métodos que nos dan los datos de varias formas distintas. En este caso estamos pidiendo todos los productos a la vez desde la api como un array y procesándolos de uno en uno a continuación.
+
+El problema es que si se nos devuelven los datos juntos, y nos vienen muchos, php nos dará un bonito Fatal error indicándonos que nos hemos quedado sin memoria. Podemos evitar esto con un generador:
+
+```php
+<?php
+
+use MiClienteApi;
+
+class ImportadorDeProductos
+{
+    protected $api;
+
+    public function __construct(MiClienteApi $api)
+    {
+        $this->api = $api;
+    }
+
+    public function importar()
+    {  
+        DB::transaction(function() use ($productos) {
+            foreach ($this->iterarProductosDeApi() as $producto) {
+                Producto::create($producto);
+            }
+        });
+    }
+
+    protected function iterarProductosDeApi(): iterable
+    {
+        yield from $this->api->iteraTodosLosProductos();
+    }
+}
+``` 
+
+Aquí estamos haciendo exactamente lo mismo sólo que en vez de almacenar los datos en memoria los vamos cogiendo y procesando de uno en uno, por lo que el consumo de memoria queda totalmente contenido y no nos explotará en la cara. ¡Magia!
+
+# Ejecuta tareas pesadas en segundo plano
 
 
 
