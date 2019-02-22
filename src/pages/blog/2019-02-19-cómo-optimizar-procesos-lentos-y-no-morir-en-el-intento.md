@@ -57,7 +57,7 @@ class MiProcesadorDeCosas
 }
 ```
 
-Parece un trozo de código inofensivo, dado un array de ids, hacemos una query a la base de datos por cada uno para obtener sus datos.
+Parece un trozo de código inofensivo: dado un array de ids, hacemos una query a la base de datos por cada uno para obtener sus datos.
 La query es muy sencilla y rápida, es cierto. El problema viene si `$cosas` tiene 100.000 elementos; como por ejemplo si estamos intentando importar un catálogo de productos y queremos actualizar los que ya existen; estaremos haciendo 100.000 queries; las cuales, además de tardar, harán que ese tiempo tu base de datos esté prácticamente bloqueada para traerle datos a tu proceso.
 
 ¿Cómo lo solucionamos? Pues es relativamente sencillo, pero tienes que tener cuidado con la memoria de tu sistema (más adelante hablaremos de esto). Imaginemos, que el código anterior lo estamos escribiendo con Laravel y `MiModeloDeCosas` es un modelo de [Eloquent](https://laravel.com/docs/5.7/eloquent), podemos hacer lo siguiente:
@@ -81,9 +81,9 @@ class MiProcesadorDeCosas
 }
 ```
 
+Esto multiplicará la eficiencia y lo notarás más cuantos más elementos contenga el array inicial, hasta que te quedes sin memoria. Más adelante veremos cómo solucionar esto.
 
-
-# Usa transacciones
+# 5. Usa transacciones
 
 
 
