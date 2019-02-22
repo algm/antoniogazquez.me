@@ -202,7 +202,7 @@ class ImportadorDeProductos
 
 Aquí estamos haciendo exactamente lo mismo sólo que en vez de almacenar los datos en memoria los vamos cogiendo y procesando de uno en uno, por lo que el consumo de memoria queda totalmente contenido y no nos explotará en la cara. ¡Magia!
 
-# Ejecuta tareas pesadas en segundo plano
+# 7. Ejecuta tareas pesadas en segundo plano
 
 
 
