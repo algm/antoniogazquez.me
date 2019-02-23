@@ -35,7 +35,7 @@ Sólo recurriría a esto como medida temporal para ganar tiempo y tampoco está 
 
 Es sorprendente la de veces que algo tan fácil como añadir un índice a una tabla de una base de datos ha mejorado en gran medida el rendimiento de una web. Antes de remangarte y ponerte a tocar código, comprueba, si aplica, las queries a la base de datos que intervengan en el proceso que quieres optimizar. A veces encontrarás una query que tarda una eternidad y sólo con añadir un índice en el sitio correcto hará que se ejecute casi de forma instantánea.
 
-Más info: [https://www.sitepoint.com/optimize-mysql-indexes-slow-queries-configuration/](https://www.sitepoint.com/optimize-mysql-indexes-slow-queries-configuration/)
+Más info: <https://www.sitepoint.com/optimize-mysql-indexes-slow-queries-configuration/>
 
 # 4. Pide los datos de una sola vez
 
@@ -83,7 +83,7 @@ class MiProcesadorDeCosas
 
 Esto multiplicará la eficiencia y lo notarás más cuantos más elementos contenga el array inicial, hasta que te quedes sin memoria. Más adelante veremos cómo solucionar esto.
 
-Este problema se conoce formalmente como "*N+1 Query Problem*". Puedes aprender más al respecto aquí: [https://vegibit.com/how-to-fix-the-n1-problem/](https://vegibit.com/how-to-fix-the-n1-problem/)
+Este problema se conoce formalmente como "_N+1 Query Problem_". Puedes aprender más al respecto aquí: <https://vegibit.com/how-to-fix-the-n1-problem/>
 
 # 5. Usa transacciones
 
@@ -130,7 +130,7 @@ class ImportadorDeProductos
 
 Antes hablábamos de que podíamos obtener un montón de datos de la base de datos al mismo tiempo para procesarlos, pidiéndolos todos a la vez. Esto está muy bien, hasta que resulta que estamos iterando sobre 10.000.000 de registros. Hacer una petición con 10.000.000 de ids no es algo muy liviano y no creo que muchos servidores sean capaces de manejarlo. Para esto, tanto php como muchos otros lenguajes de programación disponen de generadores. 
 
-Puedes aprender qué son y cómo utilizar los generadores en este artículo de mi amigo [Gaspar Fernández](https://poesiabinaria.net/): [Iteradores y generadores en PHP o por qué deberíamos utilizar yield más a menudo [con ejemplos]](https://poesiabinaria.net/2017/04/iteradores-generadores-php-deberiamos-utilizar-yield-mas-menudo-ejemplos/).
+Puedes aprender qué son y cómo utilizar los generadores en [este artículo](https://poesiabinaria.net/2017/04/iteradores-generadores-php-deberiamos-utilizar-yield-mas-menudo-ejemplos/) de mi amigo [Gaspar Fernández](https://poesiabinaria.net/).
 
 Veamos un ejemplo:
 
@@ -198,7 +198,7 @@ class ImportadorDeProductos
         yield from $this->api->iteraTodosLosProductos();
     }
 }
-``` 
+```
 
 Aquí estamos haciendo exactamente lo mismo sólo que en vez de almacenar los datos en memoria los vamos cogiendo y procesando de uno en uno, por lo que el consumo de memoria queda totalmente contenido y no nos explotará en la cara. ¡Magia!
 
@@ -214,3 +214,20 @@ Cuando tengas algo en tu aplicación que dependa de una tarea en segundo plano, 
 
 # 8. Cachea todo lo cacheable
 
+> There are only two hard things in Computer Science: cache invalidation and naming things.
+>
+> _Phil Karlton_
+
+Esta frase de Phil Karlton es una verdad como un castillo. Una de las cosas más difíciles de hacer en una aplicación es diseñar un sistema de cache que funcione de forma eficiente.
+
+Sin embargo, una estrategia de cache adecuada hará que nuestras aplicaciones corran como una bala. Quizá sea una de las formas más efectivas de mejorar el rendimiento de una web.
+
+Cuando hablamos de cache, no nos referimos solamente a guardar datos en memoria o a escribir en un servidor de cache; también podemos cachear índices de búsqueda en una tabla de nuestra base de datos (o en un motor de búsqueda tipo ElasticSearch), guardar combinaciones de parámetros y sus resultados en una base de datos NoSQL que nos permita un acceso híper rápido, pre-procesar cálculos con tareas asíncronas...
+
+Este blog es un ejemplo de ello: está hecho con [una tecnología](https://www.gatsbyjs.org/) que hace que cuando se realiza una modificación en el código o en el contenido se genere todo el sitio web en html estático; lo que hace que servir esto que estás leyendo sea extremadamente rápido y barato, sin contar con que es sencillísimo de alojar, dado que no necesita ejecutar ningún tipo de código de servidor.
+
+Plantearse qué cosas pueden generarse como contenidos estáticos y regenerarlas cuando hay una modificación que les afecta es una de las mejores formas de mejorar el rendimiento y reducir la carga de un sitio web; aunque también es una de las más difíciles de diseñar e implementar, por lo que hay que andarse con ojo cuando lo hagamos.
+
+# Concluyendo
+
+Como hemos visto hay muchas maneras de mejorar el rendimiento de nuestras aplicaciones web, estas son algunas que he ido descubriendo con los años y he comprobado que funcionan. Al final, cada caso es un mundo y tendrás que usar la imaginación y la inventiva (al fin y al cabo somos ingenieros, ¿no?) para resolver cada problema pero espero que al menos estos consejos sirvan para tener un punto de partida por donde empezar a experimentar.
