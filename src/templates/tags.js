@@ -41,7 +41,7 @@ class TagRoute extends React.Component {
 
                         <div className="text-center">
                             <h2 className="inline-block text-3xl font-semibold mw-full mx-auto side-borders side-borders-dark mb-8">
-                                Cosas que he dicho
+                                Mis publicaciones
                             </h2>
                         </div>
 

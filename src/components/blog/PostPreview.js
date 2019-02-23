@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import Img from 'gatsby-image';
 import { ChevronRight } from 'react-feather';
 
 const PostPreview = ({ post }) => (
@@ -35,9 +36,10 @@ const PostPreview = ({ post }) => (
                 </p>
             </div>
             <div className="md:w-1/3 md:pl-4 invisible hidden md:visible md:block">
-                <img
-                    src={post.frontmatter.image.publicURL}
+                <Img
+                    key={post.frontmatter.image.publicURL}
                     className="rounded-lg"
+                    fluid={post.frontmatter.image.childImageSharp.fluid}
                 />
             </div>
         </div>

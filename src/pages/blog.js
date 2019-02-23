@@ -12,7 +12,7 @@ const Blog = ({ data }) => {
             <BlogLayout>
                 <div className="text-center">
                     <h2 className="inline-block text-3xl font-semibold mw-full mx-auto side-borders side-borders-dark mb-8">
-                        Cosas que he dicho
+                        Mis publicaciones
                     </h2>
                 </div>
                 {posts.map(({ node: post }) => (
@@ -45,6 +45,11 @@ export const pageQuery = graphql`
                         image {
                             relativePath
                             publicURL
+                            childImageSharp {
+                                fluid(maxWidth: 230, quality: 85) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
                         }
                         date(formatString: "DD MMMM YYYY", locale: "es-ES")
                     }

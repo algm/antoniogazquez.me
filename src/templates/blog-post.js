@@ -39,7 +39,7 @@ export const BlogPostTemplate = ({
                     >
                         <div className="h-halfscreen flex flex-col content-end justify-end items-end bg-gradient-img">
                             <div className="leading-loose text-center w-full tracking-wide">
-                                <h1 className="text-5xl w-full px-2 font-medium leading-tight md:leading-normal">
+                                <h1 className="text-2xl md:text-5xl w-full px-2 font-medium leading-tight md:leading-normal">
                                     {title}
                                 </h1>
                             </div>
@@ -119,7 +119,7 @@ const BlogPost = ({ data, location }) => {
                     </Helmet>
                 }
                 tags={post.frontmatter.tags}
-                image={post.frontmatter.image.publicURL}
+                image={post.frontmatter.image.childImageSharp.fluid.src}
                 title={post.frontmatter.title}
                 date={post.frontmatter.date}
             />
@@ -148,6 +148,11 @@ export const pageQuery = graphql`
                 tags
                 image {
                     publicURL
+                    childImageSharp {
+                        fluid(maxWidth: 2600, quality: 85) {
+                            ...GatsbyImageSharpFluid
+                        }
+                    }
                 }
             }
         }
