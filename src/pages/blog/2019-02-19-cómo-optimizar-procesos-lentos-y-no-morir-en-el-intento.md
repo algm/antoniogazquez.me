@@ -204,11 +204,13 @@ Aquí estamos haciendo exactamente lo mismo sólo que en vez de almacenar los da
 
 # 7. Ejecuta tareas pesadas en segundo plano
 
-Hay veces que los procesos tardan y no tenemos ninguna manera de hacer que vayan rápido: importar datos de sistemas externos o descargar imágenes de servidores ftp suelen ser ejemplos de estos casos.
+Hay veces que los procesos tardan y no tenemos ninguna manera de hacer que vayan rápido: importar datos de sistemas externos o descargar imágenes de servidores ftp suelen ser ejemplos habituales.
 
 En  estos casos, la mejor opción suele ser realizar estos procesos en tareas asíncronas, ya sean comandos programados con cron o procesamiento paralelo (o una combinación de ambos).
 
-Procura no hacer que las peticiones de tu aplicación dependan directamente de la ejecución directa de alguna tarea de este tipo, o tus usuarios se desesperarán esperando que acaben sus peticiones; o, lo que es peor, sus peticiones darán timeout.
+Procura no hacer que las peticiones de tu aplicación dependan directamente de la ejecución de alguna tarea de este tipo, o tus usuarios se desesperarán esperando que acaben sus peticiones; o, lo que es peor, sus peticiones darán timeout arruinando su experiencia.
 
-# Cachea todo lo cacheable
+Cuando tengas algo en tu aplicación que dependa de una tarea en segundo plano, procura que dicha tarea almacene el resultado en algún lugar que luego te permita acceder rápidamente; ya sea una base de datos, un fichero o un servidor de cache, lo que nos lleva a nuestro siguiente punto...
+
+# 8. Cachea todo lo cacheable
 
