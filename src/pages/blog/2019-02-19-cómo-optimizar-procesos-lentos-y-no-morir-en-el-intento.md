@@ -168,7 +168,7 @@ class ImportadorDeProductos
 
 En este ejemplo, tenemos una api que tenemos abstraida en una clase, con métodos que nos dan los datos de varias formas distintas. En este caso estamos pidiendo todos los productos a la vez desde la api como un array y procesándolos de uno en uno a continuación.
 
-El problema es que si se nos devuelven los datos juntos, y nos vienen muchos, php nos dará un bonito Fatal error indicándonos que nos hemos quedado sin memoria. Podemos evitar esto con un generador:
+El problema es que si se nos devuelven los datos juntos, y nos vienen muchos, php nos dará un bonito _Fatal error _indicándonos que nos hemos quedado sin memoria. Podemos evitar esto con un generador:
 
 ```php
 <?php
