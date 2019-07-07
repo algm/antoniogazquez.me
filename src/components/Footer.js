@@ -9,6 +9,7 @@ const Footer = () => (
                 <a
                     className="text-blue"
                     target="_blank"
+                    rel="noreferrer"
                     href="https://www.linkedin.com/in/antonio-g%C3%A1zquez-19341a18/"
                 >
                     LinkedIn
@@ -17,6 +18,7 @@ const Footer = () => (
             <p className="mt-4">
                 <a
                     target="_blank"
+                    rel="noreferrer"
                     href="https://www.linkedin.com/in/antonio-g%C3%A1zquez-19341a18/"
                 >
                     <img src={linkedin} alt="linkedin" className="w-16" />

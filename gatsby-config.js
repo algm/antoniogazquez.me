@@ -123,5 +123,12 @@ module.exports = {
                 icon: 'src/img/icon.jpg',
             },
         },
+        {
+            resolve: 'gatsby-plugin-google-fonts',
+            options: {
+                fonts: ['Cabin'],
+                display: 'swap',
+            },
+        },
     ],
 };

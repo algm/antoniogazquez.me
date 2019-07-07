@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import 'moment/locale/es';
 import { ExternalLink } from 'react-feather';
+import Img from 'gatsby-image';
 
 const ExperienceItem = ({ children, img, title, position, from, to, url }) => {
     let positionContent = null;
@@ -17,6 +18,7 @@ const ExperienceItem = ({ children, img, title, position, from, to, url }) => {
                 className="text-blue hover:text-blue-dark no-underline"
                 href={url}
                 target="_blank"
+                rel="noreferrer"
                 title={title}
             >
                 {title}
@@ -33,10 +35,10 @@ const ExperienceItem = ({ children, img, title, position, from, to, url }) => {
             <article>
                 <div className="px-8 md:flex md:justify-start md:items-center md:content-center md:text-base">
                     <div className="md:pr-4 md:pl-0">
-                        <img
-                            src={img}
+                        <Img
+                            {...img}
                             alt={title}
-                            className="h-24 md:h-auto md:w-48 md:max-h-full rounded-lg mb-2"
+                            className="h-auto w-24 md:w-48 md:max-h-full rounded-lg mb-2"
                         />
                     </div>
                     <div className="md:w-3/4 md:pl-4 md:flex-1">
