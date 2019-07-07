@@ -17,13 +17,7 @@ module.exports = {
                 ],
             },
         },
-        {
-            resolve: 'gatsby-plugin-purgecss',
-            options: {
-                tailwind: true,
-                purgeOnly: ['src/all.css'],
-            },
-        },
+
         {
             // keep as first gatsby-source-filesystem plugin for gatsby image support
             resolve: 'gatsby-source-filesystem',
