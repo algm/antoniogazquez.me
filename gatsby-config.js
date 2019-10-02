@@ -40,6 +40,12 @@ module.exports = {
                 name: 'images',
             },
         },
+        {
+            resolve: 'gatsby-plugin-netlify-cms',
+            options: {
+                modulePath: `${__dirname}/src/cms/cms.js`,
+            },
+        },
         'gatsby-remark-copy-linked-files',
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
@@ -105,13 +111,15 @@ module.exports = {
                 ],
             },
         },
+
         {
-            resolve: 'gatsby-plugin-netlify-cms',
+            resolve: 'gatsby-plugin-google-fonts',
             options: {
-                modulePath: `${__dirname}/src/cms/cms.js`,
+                fonts: ['Cabin'],
+                display: 'swap',
             },
         },
-        'gatsby-plugin-netlify', // make sure to keep it last in the array
+
         {
             resolve: 'gatsby-plugin-manifest',
             options: {
@@ -123,12 +131,7 @@ module.exports = {
                 icon: 'src/img/icon.jpg',
             },
         },
-        {
-            resolve: 'gatsby-plugin-google-fonts',
-            options: {
-                fonts: ['Cabin'],
-                display: 'swap',
-            },
-        },
+
+        'gatsby-plugin-netlify', // make sure to keep it last in the array
     ],
 };
